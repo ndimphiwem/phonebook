@@ -1,1 +1,30 @@
-<p>phonebook works!</p>
+<nav class="navbar navbar-light bg-dark sticky-top">
+  <div class="container-fluid justify-content-end">
+    <div mdbDropdown class="dropdown" *ngIf="auth.user$ | async as user">
+      <button
+        class="btn btn-outline-white dropdown-toggle text-capitalize fs-6"
+        type="button"
+        id="dropdownMenuButton"
+        aria-expanded="false"
+        mdbDropdownToggle
+      >
+        
+      <img
+        [src]="user?.picture"
+        class="img rounded-circle"
+        height="35"
+        alt=""
+        style="pointer-events: none;"
+      />
+        {{ user?.given_name }}
+      </button>
+      <ul mdbDropdownMenu class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton">
+        <li>
+          <button class="dropdown-item btn text-capitalize fs-6 d-flex align-items-center" (click)="auth.logout({ returnTo: document.location.origin })">
+            <i class="fas fa-2x fa-power-off text-danger"></i> <span class="ms-2">Log Out</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
