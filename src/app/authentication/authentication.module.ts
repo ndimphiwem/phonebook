@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationComponent } from './authentication.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LandingGuard } from '../shared/landing.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthenticationComponent
-    
+    component: AuthenticationComponent,
+    canActivate: [LandingGuard]
   }
 ];
 

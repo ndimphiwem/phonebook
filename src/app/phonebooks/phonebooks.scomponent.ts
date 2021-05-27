@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-phonebook',
-  templateUrl: './phonebook.component.html'
+  templateUrl: './phonebooks.component.html'
 })
-export class PhonebookComponent implements OnInit {
+export class PhonebooksComponent implements OnInit {
 
   constructor() { }
 

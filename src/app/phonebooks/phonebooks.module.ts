@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PhonebookComponent } from './phonebook.component';
+import { PhonebooksComponent } from './phonebooks.scomponent';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/auth.guard';
 
 
 export const routes: Routes = [
   {
     path: '',
-    component: PhonebookComponent
+    component: PhonebooksComponent,
+    canActivate: [AuthGuard],
   }
 ];
 
 @NgModule({
   declarations: [
-    PhonebookComponent
+    PhonebooksComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
   ]
 })
-export class PhonebookModule { }
+export class PhonebooksModule { }
