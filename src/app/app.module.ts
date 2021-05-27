@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MdbModule } from 'mdb-angular-ui-kit';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     MdbModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    AuthModule.forRoot({
+      ...environment.authConfig
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
