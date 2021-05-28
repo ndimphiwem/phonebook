@@ -3,7 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
-  selector: 'app-phonebook',
+  selector: 'app-phonebooks',
   templateUrl: './phonebooks.component.html'
 })
 export class PhonebooksComponent implements OnInit {

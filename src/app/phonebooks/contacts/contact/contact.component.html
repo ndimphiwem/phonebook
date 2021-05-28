@@ -1,0 +1,79 @@
+<div class="card bg--card text-white" *ngIf="contact">
+  <div class="card-body">
+    <div class="d-flex justify-content-between px-md-1 mb-3">
+      <div>
+        <h3 class="text-warning">{{ contact?.name }}</h3>
+        <p class="mb-0 text-warning">
+          <i class="fas fa-envelope text-warning me-2"></i>
+          {{ contact?.email }}
+        </p>
+        <p class="mb-0 text-warning">
+          <i class="fas fa-phone-alt text-warning me-2"></i>
+          {{ contact?.phone }}
+        </p>
+      </div>
+      <div class="align-self-start">
+        <i class="fas fa-user-circle text-warning fa-4x"></i>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center py-2" *ngIf="loading">
+      <div class="spinner-border text-warning" role="status"></div>
+    </div>
+    <div class=" d-flex align-items-center justify-content-between px-md-1 mb-3" *ngIf="!loading">
+      <div class="d-block">
+        <a role="button" class="text-dark me-3" (click)="updating = !updating">
+          <i class="fas fa-edit fa-2x"></i>
+        </a>
+        <a role="button" class="text-danger me-3" (click)="deleteContact()">
+          <i class="fas fa-trash-alt fa-2x"></i>
+        </a>
+      </div>
+    </div>
+    <div class="d-block px-md-1" *ngIf="updating">
+      <form *ngIf="contactForm" (submit)="updateContact(contactForm)" [formGroup]="contactForm">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="name"
+                placeholder="Name"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="email"
+                placeholder="Email Address"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="phone"
+                placeholder="Phone Number"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+              <button type="submit" class="btn btn-sm btn-dark d-flex align-items-center" *ngIf="!loading">Update</button>
+              <button class="btn btn-sm btn-dark" type="button" *ngIf="loading">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

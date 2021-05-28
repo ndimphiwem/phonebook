@@ -1,0 +1,70 @@
+<div class="container mt-3 mb-5 py-3">
+  <p class=" note note-light">
+    <a role="button" class="text-dark me-3 d-flex align-items-center" [routerLink]="'/phonebooks'">
+      <i class="fas fa-arrow-circle-left fa-2x me-2"></i> <span class="fw-bold fs-6">Back to Phonebooks</span>
+    </a>
+  </p>
+  <div class="row">
+    <div class="col-md-6 col-lg-4">
+      <form *ngIf="contactForm" (submit)="addContact(contactForm)" [formGroup]="contactForm" class="p-3 pb-5 card">
+        <div class="row">
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <label class="form-label">Name*</label>
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="name"
+                placeholder="Name"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <label class="form-label">Email Address*</label>
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="email"
+                placeholder="Email Address"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="mb-3 pb-1">
+              <label class="form-label">Phone Number*</label>
+              <input
+                type="text"
+                class="form-control py-2"
+                formControlName="phone"
+                placeholder="Phone Number"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+              <button type="submit" class="btn btn-dark d-flex align-items-center" *ngIf="!loading">
+                <i class="fas fa-plus fa-2x me-2"></i> Add Contact
+              </button>
+              <button class="btn btn-dark" type="button" *ngIf="loading">
+                <span
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                ></span>
+              </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 col-lg-8">
+      <div class="row">
+        <div class="col-12 col-lg-6 mb-3" *ngFor="let contact of contacts">
+          <app-contact [contact]="contact" [phonebookId]="phonebookId" (updated)="getContacts(phonebookId)"></app-contact>
+        </div>
+        <p class="note note-warning" *ngIf="contacts?.length === 0">
+          You don't have any contacts on this phonebook, please add one or more.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

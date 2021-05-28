@@ -4,6 +4,11 @@ import { PhonebooksComponent } from './phonebooks.scomponent';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/auth.guard';
 import { MdbModule } from 'mdb-angular-ui-kit';
+import { ManagePhonebooksComponent } from './manage-phonebooks/manage-phonebooks.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PhonebookComponent } from './phonebook/phonebook.component';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ContactComponent } from './contacts/contact/contact.component';
 
 
 export const routes: Routes = [
@@ -11,16 +16,31 @@ export const routes: Routes = [
     path: '',
     component: PhonebooksComponent,
     canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: ManagePhonebooksComponent
+      },
+      {
+        path: ':phonebookId/contacts',
+        component: ContactsComponent
+      }
+    ]
   }
 ];
 
 @NgModule({
   declarations: [
-    PhonebooksComponent
+    PhonebooksComponent,
+    ManagePhonebooksComponent,
+    PhonebookComponent,
+    ContactsComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
     MdbModule
   ]
 })

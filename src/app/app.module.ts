@@ -7,6 +7,7 @@ import { MdbModule } from 'mdb-angular-ui-kit';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from '@auth0/auth0-angular';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MdbModule,
     NoopAnimationsModule,
     AuthModule.forRoot({
