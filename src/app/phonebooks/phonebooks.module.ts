@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PhonebooksComponent } from './phonebooks.scomponent';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '../shared/auth.guard';
-import { MdbModule } from 'mdb-angular-ui-kit';
+import { MdbDropdownModule } from 'mdb-angular-ui-kit';
 import { ManagePhonebooksComponent } from './manage-phonebooks/manage-phonebooks.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PhonebookComponent } from './phonebook/phonebook.component';
@@ -42,7 +42,7 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MdbModule,
+    MdbDropdownModule,
     SharedModule
   ]
 })
