@@ -1,0 +1,12 @@
+
+  <div class="input-group">
+    <span class="input-group-text border-0" *ngIf="searchField?.value === '' && !searching"><i class="fas fa-search" ></i></span>
+    <div class="input-group-text border-0" *ngIf="searching">
+      <div class="spinner-border spinner-border-sm text-info" role="status"></div>
+    </div>
+    <button (click)="clearSearchResults()" class="input-group-text border-0" *ngIf="searchField?.value !== '' && !searching">
+      <i class="fas fa-times"></i>
+    </button>
+    <input [formControl]="searchField" type="text" class="form-control rounded" placeholder="Find Contacts" aria-label="Search"
+    aria-describedby="search-addon" />
+  </div>
