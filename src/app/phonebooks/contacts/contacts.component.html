@@ -1,12 +1,16 @@
-<div class="container mt-3 mb-5 py-3">
-  <p class=" note note-light">
-    <a role="button" class="text-dark me-3 d-flex align-items-center" [routerLink]="'/phonebooks'">
+<div class="container mt-1 mt-md-2 mb-5 py-md-2">
+  <p class="note note-light row mx-0 px-0 justify-content-between align-items-center">
+    <a role="button" class="text-dark me-3 d-flex align-items-center col-md-4 mb-2 mb-md-0" [routerLink]="'/phonebooks'">
       <i class="fas fa-arrow-circle-left fa-2x me-2"></i> <span class="fw-bold fs-6">Back to Phonebooks</span>
     </a>
+    <app-search *ngIf="!loading" class="col-md-6 col-lg-4" (searchUpdated)="filteredContacts = filterContacts($event)"></app-search>
   </p>
   <div class="row">
     <div class="col-md-6 col-lg-4">
-      <form *ngIf="contactForm" (submit)="addContact(contactForm)" [formGroup]="contactForm" class="p-3 pb-5 card">
+      <form *ngIf="contactForm" (submit)="addContact(contactForm)" [formGroup]="contactForm" class="p-3 card">
+        <h4>
+          Add a new contact
+        </h4>
         <div class="row">
           <div class="col-12">
             <div class="mb-3 pb-1">
@@ -58,11 +62,11 @@
     </div>
     <div class="col-md-6 col-lg-8">
       <div class="row">
-        <div class="col-12 col-lg-6 mb-3" *ngFor="let contact of contacts">
+        <div class="col-12 col-lg-6 mb-3" *ngFor="let contact of filteredContacts">
           <app-contact [contact]="contact" [phonebookId]="phonebookId" (updated)="getContacts(phonebookId)"></app-contact>
         </div>
-        <p class="note note-warning" *ngIf="contacts?.length === 0">
-          You don't have any contacts on this phonebook, please add one or more.
+        <p class="note note-warning" *ngIf="filteredContacts?.length === 0">
+          No contacts found.
         </p>
       </div>
     </div>

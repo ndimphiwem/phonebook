@@ -11,6 +11,7 @@ import { PhonebookService } from '../phonebook.service';
 export class ContactsComponent implements OnInit {
   phonebookId: any;
   contacts: any;
+  filteredContacts: any;
   contactForm: any;
   loading = false;
 
@@ -45,8 +46,20 @@ export class ContactsComponent implements OnInit {
 
   getContacts(phonebookId: any) {
     this.phonebook.getContacts(phonebookId).pipe(
-      tap((contacts: any) => this.contacts = contacts)
+      tap((contacts: any) => {
+        this.contacts = contacts;
+        this.filteredContacts = contacts;
+      })
     ).subscribe();
+  }
+
+  filterContacts(searchString: string) {
+    const searchResults = this.contacts.filter((contact: any) => {
+      return contact?.name.toLowerCase().includes(searchString.toLowerCase())
+            || contact?.email?.toLowerCase().includes(searchString.toLowerCase())
+            || contact?.phone?.toLowerCase().includes(searchString.toLowerCase());
+    });
+    return searchResults;
   }
 
 }

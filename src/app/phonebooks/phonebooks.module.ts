@@ -9,6 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PhonebookComponent } from './phonebook/phonebook.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactComponent } from './contacts/contact/contact.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 export const routes: Routes = [
@@ -41,7 +42,8 @@ export const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    MdbModule
+    MdbModule,
+    SharedModule
   ]
 })
 export class PhonebooksModule { }
