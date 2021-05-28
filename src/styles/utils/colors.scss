@@ -1,0 +1,13 @@
+.bg {
+  &__body {
+    background: $color-3;
+  }
+
+  &__nav {
+    background: $color-2;
+  }
+
+  &__card {
+    background: $color-4;
+  }
+}

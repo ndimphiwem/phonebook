@@ -1,29 +1,29 @@
-<div class="card text-white" *ngIf="phonebook">
+<div class="card bg__card text-white" *ngIf="phonebook">
   <div class="card-body">
-    <div class="d-flex justify-content-between px-md-1 mb-3">
+    <div class="d-flex justify-content-between align-items-start px-md-1 mb-3">
       <div>
         <a [routerLink]="phonebook?.id + '/contacts'">
-          <h3 class="text-warning">{{ phonebook?.name }}</h3>
+          <h3 class="text-white">{{ phonebook?.name }}</h3>
         </a>
-        <p class="mb-0 text-warning">{{ phonebook?.description }}</p>
+        <p class="mb-0">{{ phonebook?.description }}</p>
       </div>
-      <div class="align-self-center">
-        <i class="fas fa-address-book text-warning fa-3x"></i>
+      <div>
+        <i class="fas fa-address-book fa-3x"></i>
       </div>
     </div>
     <div class="d-flex justify-content-center py-2" *ngIf="loading">
-      <div class="spinner-border text-warning" role="status"></div>
+      <div class="spinner-border" role="status"></div>
     </div>
     <div class=" d-flex align-items-center justify-content-between px-md-1 mb-3" *ngIf="!loading">
       <div class="d-block">
-        <a role="button" class="text-dark me-3" (click)="updating = !updating">
+        <a role="button" class="text-white me-3" (click)="updating = !updating">
           <i class="fas fa-edit fa-2x"></i>
         </a>
         <a role="button" class="text-danger me-3" (click)="deletePhonebook()">
           <i class="fas fa-trash-alt fa-2x"></i>
         </a>
       </div>
-      <button class="btn btn-dark d-flex align-items-center" [routerLink]="phonebook?.id + '/contacts'">
+      <button class="btn btn-outline-white d-flex align-items-center" [routerLink]="phonebook?.id + '/contacts'">
         <i class="fas fa-user-circle me-3"></i>
         Contacts
       </button>
@@ -52,8 +52,8 @@
             </div>
           </div>
           <div class="col-12">
-              <button type="submit" class="btn btn-sm btn-dark d-flex align-items-center" *ngIf="!loading">Update</button>
-              <button class="btn btn-sm btn-dark" type="button" *ngIf="loading">
+              <button type="submit" class="btn btn-sm btn-outline-white d-flex align-items-center" *ngIf="!loading">Update</button>
+              <button class="btn btn-sm btn-outline-white" type="button" *ngIf="loading">
                 <span
                   class="spinner-border spinner-border-sm"
                   role="status"
